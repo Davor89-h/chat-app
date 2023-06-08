@@ -35,8 +35,6 @@ class Messages extends Component {
   render() {
     const { messages } = this.props;
 
-    // console.log("message rendered")
-
     return (
       <ul className="Messages-list">
         {messages.map((m) => this.renderMessage(m))}

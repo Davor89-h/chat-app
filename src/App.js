@@ -4,11 +4,11 @@ import Input from "./Input";
 import "./App.css";
 
 function randomName() {
-  const adjectives = ["Madison", "Luna", "Grace", "Chloe", "Penelope", "Layla", "Riley", "Zoey", "Nora", "Lily", "Eleanor", "Hannah", "Lillian", "Addison", "Aubrey", "Ellie", "Stella", "Natalie", "Zoe", "Leah", "Hazel", "Violet", "Aurora"];
-  const nouns = ["Hernandez", "Lopez", "Gonzalez", "Wilson", "Anderson", "Thomas", "Taylor", "Moore", "Jackson", "Martin", "Lee", "Perez", "Thompson", "White", "Harris", "Sanchez", "Clark", "Ramirez", "Lewis", "Robinson", "Walker", "Young", "Hall"];
-  const adjective = adjectives[Math.floor(Math.random() * adjectives.length)];
-  const noun = nouns[Math.floor(Math.random() * nouns.length)];
-  return adjective + "_" + noun;
+  const firstNames = ["Stjepan", "Josip", "Antun", "Marko", "Ana", "Antonio", "Marija", "Jakov", "Simon", "Simona", "Ljudevit", "Krešimir", "Tihomir", "Luka", "Lura", "Lorena", "Elizabeta", "Natalija", "Mirela", "Agata", "Jasmina", "Jasmin", "Petar"];
+  const lastNames = ["Marić", "Anić", "Horvat", "Posavec", "Hladin", "Malok", "Gazdić", "Kramar", "Farc", "Leljak", "Pintarić", "Nuli", "Novak", "Vincek", "Korpar", "Bencek", "Banec", "Rožman", "Glavica", "Međeral", "Gregur", "Gregurec", "Gerić"];
+  const firstName = firstNames[Math.floor(Math.random() * firstNames.length)];
+  const lastName = lastNames[Math.floor(Math.random() * lastNames.length)];
+  return firstName + "_" + lastName;
 }
 
 function randomColor() {
@@ -28,8 +28,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    // this.drone = new window.Scaledrone(process.env.REACT_APP_DRONE_ID_KEY, {
-    this.drone = new window.Scaledrone("XHZrsSMiMyWJYHJB", {
+    this.drone = new window.Scaledrone(process.env.REACT_APP_DRONE_ID_KEY, {
       data: this.state.member
     });
     this.drone.on('open', error => {

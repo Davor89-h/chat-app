@@ -25,8 +25,8 @@ class Messages extends Component {
           className="avatar" style={{ backgroundColor: member.clientData.color }}>
         </div>
         <div className="message-content">
-          <div className="username">{member.clientData.username}</div>
           <div className="text">{text}</div>
+          <div className="username">{member.clientData.username}</div>
         </div>
       </li>
     );

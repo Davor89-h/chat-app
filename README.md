@@ -1,3 +1,32 @@
+Ova aplikacija služi za slanje i primanje poruka u stvarnom vremenu.
+Aplikacija je pisana u React-u i služi se klasnim komponentama. Na početku sveke komponente uvoze se potrebni moduli React i {Component} iz React biblioteke.
+
+App.js komonenta predstavlja glavnu komonentu u kojoj je smještena logika cijele aplikacije. Kako bi se to postiglo u komponentu su uvezene App.css, Input.js i Messages.js komponente. 
+App.js komponenta sadrži funkcije randomName i randomColor. Funkcija randomName generira slučajno ime pošiljatelja poruke kombinirajuću slučajnim odabirm imena i prezimena iz definiranih lista. Funkcija randomColor generira slučajnu boju avatara pošiljatelja poruke.
+Zatim se definira klasa App. U konstruktoru klase App se postavlja početno stanje komponente messages i member, a pri čemu messages ima početno stanje prazan string dok member poprima početno stanje kao objekt sa korisničkim inemenom i bojom genriranih funkcijama randomName i RandomColor.
+U metodi ComponentDidMount se stvara nova istanca Scaledron objekta kojemu se predaje atrbut data koji sadrži informacije o članu odnosno njegovo korisničko ime i boju. Nakon što se uspješno otvori nova Saledron veza, tada se ažurira novo stanje objekta s nazivom member, a što se postiže dodavanjem identifikatora clientId. Kako bi primao poruke, pretplaćuje se na sobu observable-room.
+Metoda sendMessage koristi dron objekt kako bi se poslala poruka koja se objavljuje u sobi observable-room. 
+U metodi render je definiran prikaz same komponente, a vraća header i u njemu pozicioniran h1 element kao semantički HTML element te komponente Message i Input. Komponenta Message prima propove messages i curentMrmber koji vraćaju tekst poruke i pošiljatelja. Komponenta Input prima prop senMessage za slanje poruke.
+Na kraju se koristi export default App; kako bi se omogućio uvoz komponente u druge komponente.
+
+Komponenta Input.js omogućuje slanje poruka u aplikaciji.
+Klasa Input predstavlja komponentu za unos poruka. U konstruktoru klase Input postavlja se početno stanje komponente text koje je prazan string.
+Komponenta ima dvije metode i to onChange i onState. Metoda onChanege se ažurira stanje komponente tako da se vrijednost text postavi na vrijednost nove unesene poruke tj. teksta. Metoda onSubmit se poziva kada se pritisne gumb za slanje poruke ili pritiskom na tipku Enter. U ovoj metodi najprije se sprečava pretpostavljeno ponašanje obrasca, a zatim provjerava dali je unesen teks, a ko nije unesen teks ili je unesen razmak, vraća upozoravajuću poruku, a ukoliko je unesen teks, poziva se metoda koja šalje unesen tekst kroz props. Nakon samog slanja poruke, stanje komponente se prazni, odnosno resetira na prazano string.
+Meroda metodi render je definiran prikaz same komponente. Ovdje se prikazuje obrazaf form s poljem za unos teksta poruke i gumba za slanje poruke.
+Na kraju se koristi export default Input; kako bi se omogućio uvoz komponente u druge komponente.
+
+Komponenta Messages.js omogućuje prikaz liste poruka.
+U komponenti je definirana metoda randomId koja generira slučajan broj između 1 i 100 000, a koristi se za generiranje jedinstvenog identifikatora za svaku poruku u listi.
+Metoda renderMessage definira izgled prikaza svake poruke te poziva metodu rendomId kako bi se generirao jedinstveni identifikator za svaku poruku. Metoda renderMessage prima objekt message koji sadrži podatke o memberu koji je poslao poruku i teks poruke. Svojstva props daje podatke o trenutnom članu te se vrši provjera dali je poruku poslao trenutačni član ili ne. Temeljem određivanja dali je poruku poslao trenutačni član ili ne, dodjeluje se odgovarajuča CSS klasa. Ako se radi o trenutnom čanu dodjeljuje se CSS klasa Mesages-message curentMember, a sko se ne radi o trenutnom članu, dodjeljuje se klasa Messages-mesage a koje su definirane u komponenti App.css. Zatim se poruka prikazuje u obliku liste elemeta pri čemu se unutar li elementa prikazuje avatar membera i sam sadržaj poruke koji se sastoji od teksta i korisničkog imena. 
+U render metodi se u svrhu generiranje li elemenata za svaku poruku poziva metoda renderMesage.
+Na kraju se koristi export default  Messages; kako bi se omogućio uvoz komponente u druge komponente.
+
+
+U komponenti App.css smješten je css koji pomoću selektora omogućuje primjenu stilova, boja i rasporeda HTML elemenata. 
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
